@@ -1,0 +1,2 @@
+module PredialAgsJmsHelper
+end
