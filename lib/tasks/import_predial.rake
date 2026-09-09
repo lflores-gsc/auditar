@@ -5,7 +5,7 @@ namespace :import do
   task predial_csv: :environment do
     file_path = Rails.root.join("storage", "DCC-PREDIAL-2026.csv")
     unless File.exist?(file_path)
-      puts "File not found at #{file_path}"
+      puts "No se encontró el archivo en #{file_path}"
       exit 1
     end
 
@@ -17,20 +17,20 @@ namespace :import do
     def extract_desarrollo(val)
       return "" if val.nil?
       str = val.strip.upcase
-      
+
       # Remove known prefixes
       str = str.sub(/\AF\s*\d+\s*/, "") # e.g. "F 101 "
       str = str.sub(/\ARESERVA\s+/, "") # e.g. "RESERVA "
-      
+
       # Remove leading articles: LA, EL, LOS, LAS
       str = str.sub(/\A(LA|EL|LOS|LAS)\s+/, "")
-      
+
       # Match trailing roman numeral
       if str =~ /\s+(X|IX|VIII|VII|VI|V|IV|III|II|I)\z/
         roman = $1
         str = str.sub(/\s+#{roman}\z/, roman_to_int(roman).to_s)
       end
-      
+
       # Remove ALL spaces from the final result
       str.gsub(/\s+/, "")
     end
@@ -49,7 +49,7 @@ namespace :import do
 
       # Generate extracted value for index construction
       extracted_d = extract_desarrollo(raw_desarrollo)
-      
+
       # Construct the unique index string
       index_val = "#{extracted_d}-#{m_val}-#{l_val}"
 

@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_08_164920) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_08_225651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "neodata_records", force: :cascade do |t|
+    t.string "codigo_cliente"
+    t.datetime "created_at", null: false
+    t.string "index"
+    t.string "manzana"
+    t.string "nombre_cliente"
+    t.string "nombre_proyecto"
+    t.string "num_lote"
+    t.datetime "updated_at", null: false
+    t.string "vivienda"
+    t.index ["index"], name: "index_neodata_records_on_index", unique: true
+  end
 
   create_table "predial_ags_jms", force: :cascade do |t|
     t.string "catastral"

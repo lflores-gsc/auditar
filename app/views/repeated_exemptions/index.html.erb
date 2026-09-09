@@ -1,0 +1,54 @@
+<div class="sm:flex sm:items-center">
+  <div class="sm:flex-auto">
+    <h1 class="text-2xl font-semibold text-slate-900">Registros Duplicados</h1>
+    <p class="mt-2 text-sm text-slate-700">
+      Listado de registros duplicados capturados (Repeated Exemptions).
+      Total de registros: <span class="font-semibold"><%= @records.size %></span>.
+    </p>
+  </div>
+  <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+    <%= link_to "Regresar", root_path, class: "inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-auto" %>
+  </div>
+</div>
+
+<div class="mt-8 flex flex-col">
+  <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+      <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+        <table class="min-w-full divide-y divide-slate-300">
+          <thead class="bg-slate-50">
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-slate-900 sm:pl-6 w-px whitespace-nowrap">Index</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 w-full">Razón (Reason)</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 w-px whitespace-nowrap">Cuenta</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 w-px whitespace-nowrap">Catastral</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 w-px whitespace-nowrap">Desarrollo</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 w-px whitespace-nowrap">M / L</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 bg-white">
+            <% @records.each do |record| %>
+              <tr class="hover:bg-slate-50 transition-colors">
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-slate-900 sm:pl-6">
+                  <%= record.index %>
+                </td>
+                <td class="px-3 py-4 text-sm text-slate-500"><%= record.reason %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500"><%= record.cuenta.presence || '-' %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500"><%= record.catastral.presence || '-' %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500"><%= record.desarrollo.presence || '-' %></td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                    M: <%= record.m.presence || '-' %>
+                  </span>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 ml-1">
+                    L: <%= record.l.presence || '-' %>
+                  </span>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
