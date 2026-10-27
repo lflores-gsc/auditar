@@ -44,7 +44,7 @@ gem "image_processing", "~> 1.2"
 
 # Manejo eficiente de CSV y lectura de archivos Excel nativos si se requiere
 gem "csv"
-gem "roo", "~> 2.10"       # Opcional, para parsear directamente .xlsx si algún CSV viene mal codificado
+gem "roo", "~> 4.0"        # Opcional, para parsear directamente .xlsx si algún CSV viene mal codificado
 gem "caxlsx", "~> 4.0"     # Para generar reportes finales en Excel con formato y celdas tipadas
 
 
