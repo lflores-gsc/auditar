@@ -47,6 +47,8 @@ gem "csv"
 gem "roo", "~> 2.10"       # Opcional, para parsear directamente .xlsx si algún CSV viene mal codificado
 gem "caxlsx", "~> 4.0"     # Para generar reportes finales en Excel con formato y celdas tipadas
 
+# Paginación con Kaminari
+gem "kaminari"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

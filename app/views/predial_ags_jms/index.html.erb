@@ -3,7 +3,7 @@
     <h1 class="text-2xl font-semibold text-slate-900">Datos Predial</h1>
     <p class="mt-2 text-sm text-slate-700">
       Listado oficial de pagos de predial procesados e importados desde origen.
-      Total de registros importados: <span class="font-semibold"><%= @records.size %></span>.
+      Total de registros importados: <span class="font-semibold"><%= @records.total_count %></span>.
     </p>
   </div>
   <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
@@ -11,7 +11,11 @@
   </div>
 </div>
 
-<div class="mt-8 flex flex-col">
+<div class="mt-6">
+  <%= render "shared/pagination_bar", records: @records, per_page: @per_page %>
+</div>
+
+<div class="mt-4 flex flex-col">
   <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
       <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
@@ -53,4 +57,8 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="mt-4">
+  <%= render "shared/pagination_bar", records: @records, per_page: @per_page %>
 </div>

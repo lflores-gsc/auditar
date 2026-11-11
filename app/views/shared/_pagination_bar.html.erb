@@ -1,0 +1,32 @@
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-white px-4 py-3 border border-slate-200 rounded-lg shadow-sm">
+  <div class="flex flex-wrap items-center gap-4 text-sm text-slate-700">
+    <div>
+      <% if records.total_count > 0 %>
+        Mostrando
+        <span class="font-semibold text-slate-900"><%= records.offset_value + 1 %></span>
+        a
+        <span class="font-semibold text-slate-900"><%= [records.offset_value + records.limit_value, records.total_count].min %></span>
+        de
+        <span class="font-semibold text-slate-900"><%= records.total_count %></span>
+        registros
+      <% else %>
+        Sin registros para mostrar
+      <% end %>
+    </div>
+
+    <%= form_with url: request.path, method: :get, local: true, class: "inline-flex items-center gap-2" do %>
+      <label class="inline-flex items-center gap-2 text-sm text-slate-600 whitespace-nowrap">
+        <span>Renglones por vista:</span>
+        <%= select_tag :per_page,
+              options_for_select([10, 25, 50, 100, 250], per_page),
+              id: nil,
+              onchange: "this.form.requestSubmit()",
+              class: "rounded-md border border-slate-300 bg-white py-1.5 pl-3 pr-8 text-sm font-medium text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer" %>
+      </label>
+    <% end %>
+  </div>
+
+  <div class="flex justify-end overflow-x-auto">
+    <%= paginate records %>
+  </div>
+</div>
