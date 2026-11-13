@@ -19,4 +19,7 @@
 #  index_predial_ags_jms_on_index  (index) UNIQUE
 #
 class PredialAgsJM < ApplicationRecord
+  validates :index, presence: true, uniqueness: true
+  validates :cuenta, presence: true
+  validates :desarrollo, presence: true
 end

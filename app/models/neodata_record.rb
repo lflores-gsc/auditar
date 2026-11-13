@@ -18,4 +18,7 @@
 #  index_neodata_records_on_index  (index) UNIQUE
 #
 class NeodataRecord < ApplicationRecord
+  validates :index, presence: true, uniqueness: true
+  validates :nombre_proyecto, presence: true
+  validates :vivienda, presence: true
 end
