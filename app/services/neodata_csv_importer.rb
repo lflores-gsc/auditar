@@ -170,4 +170,3 @@ class NeodataCsvImporter
     content
   end
 end
-

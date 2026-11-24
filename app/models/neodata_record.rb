@@ -4,6 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  codigo_cliente  :string
+#  frente          :string(3)
 #  index           :string
 #  manzana         :string
 #  nombre_cliente  :string
